@@ -1,5 +1,4 @@
-# This is the CI/CD pipeline for the blog microservices project
-name: CI/CD for Docker CI Test Express App
+name: Ci
 
 on:
   push:
@@ -10,25 +9,20 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Setup up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
         with:
-          node-version: "20.x"
-
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Build and tag image
-        run: docker build -t fawaz482/docker-ci-test .
-
-      - name: Push Docker image
-        run: docker push fawaz482/docker-ci-test
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/docker-ci-test:latest
