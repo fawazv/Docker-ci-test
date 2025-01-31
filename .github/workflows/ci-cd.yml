@@ -3,9 +3,11 @@ name: CI/CD for Docker CI Test Express App
 
 on:
   push:
-    branches: [master]
+    branches:
+      - main
   pull_request:
-    branches: [master]
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
@@ -28,4 +30,4 @@ jobs:
       - name: Build & Push Docker Image
         run: |
           docker build -t fawaz482/docker-ci-test:latest .
-          docker push fawaz482/docker-ci-test:latest
+          docker push fawaz482docker-ci-test:latest
