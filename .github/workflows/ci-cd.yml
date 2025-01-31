@@ -27,7 +27,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Build & Push Docker Image
-        run: |
-          docker build -t fawaz482/docker-ci-test:latest .
-          docker push fawaz482docker-ci-test:latest
+      - name: Build and tag image
+        run: docker build -t fawaz482/docker-ci-test .
+
+      - name: Push Docker image
+        run: docker push fawaz482/docker-ci-test
