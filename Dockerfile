@@ -1,5 +1,5 @@
 # Fetching the minified node image on apline linux
-FROM node:22
+FROM node:20-alpine
 
 # Setting up the work directory
 WORKDIR /app
