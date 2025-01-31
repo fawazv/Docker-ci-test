@@ -6,10 +6,6 @@ app.get("/", (req, res) => {
   res.send('{ "response": "Hello From fawaz" }');
 });
 
-app.get("/", (req, res) => {
-  res.send('{ "response": "Hello From fawaz" }');
-});
-
 app.get("/will", (req, res) => {
   res.send('{ "response": "Hello World" }');
 });
