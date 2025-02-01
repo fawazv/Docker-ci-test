@@ -14,6 +14,10 @@ app.get("/test", (req, res) => {
   res.send('{ "response": "welcome" }');
 });
 
+app.get("/hi", (req, res) => {
+  res.send('{ "response": "Hello" }');
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
