@@ -3,7 +3,9 @@ version: "3.8"
 services:
   app:
     image: fawaz482/docker-ci-test:latest
+    env_file:
+      - .env
     container_name: docker-ci-test
     restart: always
     ports:
-      - "4000:3000"
+      - "4000:4000"
