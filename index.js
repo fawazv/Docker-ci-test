@@ -10,7 +10,7 @@ app.get("/test", (req, res) => {
   res.send('{ "response": "welcome" }');
 });
 
-app.get("/test", (req, res) => {
+app.get("/welcome", (req, res) => {
   res.send('{ "response": "welcome" }');
 });
 
